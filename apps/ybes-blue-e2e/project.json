@@ -1,0 +1,9 @@
+{
+  "name": "ybes-blue-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/ybes-blue-e2e/src",
+  "targets": {},
+  "tags": [],
+  "implicitDependencies": ["ybes-blue"]
+}

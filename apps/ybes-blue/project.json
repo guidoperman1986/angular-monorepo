@@ -1,0 +1,75 @@
+{
+  "name": "ybes-blue",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "angular-monorepo",
+  "sourceRoot": "apps/ybes-blue/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/ybes-blue",
+        "index": "apps/ybes-blue/src/index.html",
+        "browser": "apps/ybes-blue/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/ybes-blue/tsconfig.app.json",
+        "assets": [
+          "apps/ybes-blue/src/favicon.ico",
+          "apps/ybes-blue/src/assets"
+        ],
+        "styles": ["apps/ybes-blue/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "ybes-blue:build:production"
+        },
+        "development": {
+          "buildTarget": "ybes-blue:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "ybes-blue:build"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "ybes-blue:build",
+        "staticFilePath": "dist/apps/ybes-blue/browser"
+      }
+    }
+  }
+}

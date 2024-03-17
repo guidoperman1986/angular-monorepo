@@ -1,0 +1,48 @@
+<!-- <router-outlet></router-outlet> -->
+
+<div class="container">
+  @if (ybesData) {
+  <table>
+    <thead>
+      <td class="title" (click)="sortTable('Company Name')">Company Name</td>
+      <td class="title" (click)="sortTable('Total Revenue')">
+        Total Company Revenue
+      </td>
+      <td class="title" (click)="sortTable('Company Market Cap')">
+        Market Capitalization
+      </td>
+      <td class="title" (click)="sortTable('Women Managers')">Managers</td>
+      <td class="title" (click)="sortTable('Women Employees')">Employees</td>
+      <td class="title" (click)="sortTable('CO2 Scope 1 & 2 Adjusted')">
+        Total
+      </td>
+      <td class="title" (click)="sortTable('CO2 Scope 1 & 2 Revenue Adjusted')">
+        REV ADJ
+      </td>
+      <td class="title" (click)="sortTable('CO2 Scope 3 Adjusted')">Total</td>
+      <td class="title" (click)="sortTable('CO2 Scope 3 Revenue Adjusted')">
+        REV ADJ
+      </td>
+      <td class="title" (click)="sortTable('ESG Score')">ESG SCORE</td>
+      <td></td>
+    </thead>
+    <tbody>
+      @for (item of ybesData; track $index) {
+      <tr>
+        <td>{{ item['Company Name'] }}</td>
+        <td>{{ item['Total Revenue'] }}</td>
+        <td>{{ item['Company Market Cap'] }}</td>
+        <td>{{ item['Women Managers'] }}</td>
+        <td>{{ item['Women Employees'] }}</td>
+        <td>{{ item['CO2 Scope 1 & 2 Adjusted'] }}</td>
+        <td>{{ item['CO2 Scope 1 & 2 Revenue Adjusted'] }}</td>
+        <td>{{ item['CO2 Scope 3 Adjusted'] }}</td>
+        <td>{{ item['CO2 Scope 3 Revenue Adjusted'] }}</td>
+        <td>{{ item['ESG Score'] | number : '1.2-2' }}</td>
+        <td class="heat-line"></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+</div>
